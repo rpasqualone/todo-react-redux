@@ -11,7 +11,6 @@ class TodoForm extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
         this.props.reset();
         this.props.initialize({todoTitle: this.props.todo.title, todoMessage: this.props.todo.message});
     }
@@ -28,9 +27,7 @@ class TodoForm extends Component {
     }
 
     handleSubmit(e) {
-        console.log('test');
         e.preventDefault();
-        console.log(e);
     }
 }
 
