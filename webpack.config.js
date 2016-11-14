@@ -11,6 +11,9 @@ const VERSION = require('./package.json').version;
 module.exports = {
 	entry: './src/index.jsx',
 	devtool: PROD ? null : 'source-map',
+	devServer: {
+		port: process.env.NODE_DEV_WWW_PORT || 3000
+	},
 	output: {
 		path: path.join(__dirname, 'build'),
 		publicPath: '',

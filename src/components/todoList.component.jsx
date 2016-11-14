@@ -19,7 +19,12 @@ export default class TodoList extends Component {
 			<div>
 				<ul>
 					{ this.renderTodos() }
-					<li><Todo todo={{}} updateTodo={ this.props.dispatch.updateTodo } /></li>
+					<li>
+						<Todo
+							todo={{id: -1}}
+							createTodo={ this.props.dispatch.createTodo }
+						/>
+					</li>
 				</ul>
 			</div>
 		);
@@ -30,7 +35,7 @@ export default class TodoList extends Component {
 		return todos.map((todo) => {
 			return (
 				<li key={ todo.id }>
-					<Todo todo={ todo } updateTodo={ this.props.dispatch.updateTodo } />
+					<Todo todo={ todo } updateTodo={ this.props.dispatch.updateTodo } deleteTodo={ this.props.dispatch.deleteTodo } />
 				</li>
 			);
 		});

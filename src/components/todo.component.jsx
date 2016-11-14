@@ -12,22 +12,23 @@ export default class Todo extends Component {
 	render() {
 		const todo = this.props.todo;
 
-		if (!todo.id) {
+		if (this.props.ui.selectedTodo === todo.id) {
 			return (
-				<div className="new">
-					<span onClick={this.handleSelectEvent}>Add Todo: Click to create a new todo.</span>
-				</div>
+				<TodoForm onSubmit={this.handleSubmit} todo={todo} />
 			);
-		} else if (this.props.ui.selectedTodo !== todo.id) {
+		} else if (todo.id === -1) {
 			return (
-				<div className={todo.done ? 'done' : ''}>
-					<input type="checkbox" checked={todo.done} onClick={this.handleCheckbox} />
-					<span onClick={this.handleSelectEvent}>{`${todo.title}: ${todo.message}`}</span>
+				<div className={'new'}>
+					<span onClick={this.handleSelectEvent}>New Todo: Click to create a new todo.</span>
 				</div>
 			);
 		} else {
 			return (
-				<TodoForm onSubmit={this.handleSubmit} todo={todo} />
+				<div className={todo.done ? 'done' : ''}>
+					<input type="checkbox" checked={todo.done} onClick={this.handleCheckbox} />
+					<span onClick={this.handleSelectEvent}>{`${todo.title}: ${todo.message}`}</span>
+					<button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
+				</div>
 			);
 		}
 	}
@@ -42,11 +43,27 @@ export default class Todo extends Component {
 		this.props.updateUI('selectedTodo', this.props.todo.id);
 	};
 
+	handleDelete = () => {
+		console.log(this.props.todo.id);
+		this.props.deleteTodo(this.props.todo.id).then(() => {
+			this.props.updateUI('selectedTodo', null);
+		});
+	};
+
 	handleSubmit = (values) => {
+		const { todo } = this.props;
+
 		if (!this.props.pristine) {
-			this.props.updateTodo(this.props.todo.id, values).then(() => {
-				this.props.updateUI('selectedTodo', null);
-			});
+			if (todo.id !== -1) {
+				this.props.updateTodo(todo.id, values).then(() => {
+					this.props.updateUI('selectedTodo', null);
+				});
+			} else {
+				values.done = false;
+				this.props.createTodo(values).then(() => {
+					this.props.updateUI('selectedTodo', null);
+				});
+			}
 		}
 	};
 }

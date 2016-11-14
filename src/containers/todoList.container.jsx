@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { fetchTodos, updateTodo } from '../actions/todo.actions';
+import { fetchTodos, updateTodo, createTodo, deleteTodo } from '../actions/todo.actions';
 import TodoList from '../components/todoList.component';
 
 function mapStateToProps(state) {
@@ -9,7 +9,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators({ fetchTodos, updateTodo }, dispatch);
+	return bindActionCreators({ fetchTodos, updateTodo, createTodo, deleteTodo }, dispatch);
 }
 
 function mergeProps(stateProps, dispatchProps, ownProps) {
