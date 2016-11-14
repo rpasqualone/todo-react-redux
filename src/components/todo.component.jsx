@@ -1,40 +1,46 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import pureRender from 'pure-render-decorator';
+import ui from 'redux-ui-shallow';
 
 import TodoForm from './forms/todo.form';
 
 import '../styles/todo.css';
 
+@ui()
 @pureRender
 export default class Todo extends Component {
-    constructor(props) {
-        super(props);
+	render() {
+		const todo = this.props.todo;
 
-        this.updateCompletion = this.updateCompletion.bind(this);
-    }
+		if (this.props.ui.selectedTodo !== todo.id) {
+			return (
+				<div className={todo.done ? 'done' : ''}>
+					<input type="checkbox" checked={todo.done} onClick={this.handleCheckbox} />
+					<span onClick={this.handleSelectEvent}>{`${todo.title}`}</span>
+				</div>
+			);
+		} else {
+			return (
+				<TodoForm onSubmit={this.handleSubmit} todo={todo} />
+			);
+		}
+	}
 
-    render() {
-        const todo = this.props.todo;
+	handleCheckbox = () => {
+		const todo = this.props.todo;
 
-        if (!this.props.selectedTodo) {
-            return (
-                <div className={todo.done ? 'done' : ''}>
-                    <input type="checkbox" checked={todo.done} onClick={this.updateCompletion} />
-                    <span onClick={this.props.selectTodo}>{`${todo.title}`}</span>
-                </div>
-            );
-        } else {
-            return (
-                <TodoForm todo={todo} updateTodo={this.updateCompletion} />
-            )
-        }
-    }
+		this.props.updateTodo(todo.id, {done: !todo.done});
+	};
 
-    updateCompletion() {
-        const todo = this.props.todo;
+	handleSelectEvent = () => {
+		this.props.updateUI('selectedTodo', this.props.todo.id);
+	};
 
-        this.props.updateTodo(todo.id, {done: !todo.done});
-    }
+	handleSubmit = (values) => {
+		if (!this.props.pristine) {
+			this.props.updateTodo(this.props.todo.id, values).then(() => {
+				this.props.updateUI('selectedTodo', null);
+			});
+		}
+	};
 }

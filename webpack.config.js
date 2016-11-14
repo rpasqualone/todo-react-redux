@@ -38,6 +38,14 @@ module.exports = {
 				}
 			},
 			{
+				test: /\.scss$/,
+				loader: ExtractTextPlugin.extract('style', 'css!sass')
+			},
+			{
+				test: /\.less$/,
+				loader: ExtractTextPlugin.extract('style', 'css!less')
+			},
+			{
 				test: /\.css$/,
 				loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
 			},

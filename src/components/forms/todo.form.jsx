@@ -2,37 +2,30 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import pureRender from 'pure-render-decorator';
 
-@pureRender
-class TodoForm extends Component {
-    constructor(props) {
-        super(props);
-
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    componentDidMount() {
-        this.props.reset();
-        this.props.initialize({todoTitle: this.props.todo.title, todoMessage: this.props.todo.message});
-    }
-
-    render() {
-        return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
-                <div>
-                    <Field name="todoTitle" type="text" component="input" autoFocus />
-
-                </div>
-            </form>
-        );
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-    }
+function renderField ({ name, input, label, type, meta: { touched, error, warning }, ...props }) {
+	return <input { ...input } placeholder={ label } type={ type } { ...props } />;
 }
 
-TodoForm = reduxForm({
-    form: 'todo'
-})(TodoForm);
+@pureRender
+@reduxForm({form: 'todo'})
+class TodoForm extends Component {
+	componentDidMount() {
+		const { todo } = this.props;
+
+		this.props.initialize({ title: todo.title, message: todo.message });
+	}
+
+	render() {
+		const { handleSubmit } = this.props;
+
+		return (
+			<form onSubmit={ handleSubmit }>
+				<Field name="title" type="text" component={ renderField } label="Title" props={{ autoFocus: true }} />
+				<Field name="message" type="text" component={ renderField } label="Details" />
+				<button type="submit" style={{ display: 'none' }}>Submit</button>
+			</form>
+		);
+	}
+}
 
 export default TodoForm;
