@@ -37,13 +37,11 @@ export default function TodoReducer(state = INITIAL_STATE, action) {
 			return { ...state, all };
 		}
 		case `${DELETE_TODO}_COMPLETE`: {
-			const todoIndex = state.all.findIndex((todo) => todo.id === action.payload.data.id);
-			const all = [...state.all];
-			console.log(todoIndex);
-			console.log(all);
+			let all = [...state.all];
+			const todoIndex = state.all.findIndex((todo) => todo.id === action.payload.id);
+
 			if (todoIndex >= 0) {
-				all.slice(todoIndex, 1);
-				console.log(all)
+				all.splice(todoIndex, 1);
 			}
 			return { ...state, all };
 		}

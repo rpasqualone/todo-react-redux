@@ -43,7 +43,9 @@ export function updateTodo(id, props) {
 }
 
 export function deleteTodo(id) {
-	const request = axios.delete(`${process.env.API_URI}/todos/${id}`);
+	const request = axios.delete(`${process.env.API_URI}/todos/${id}`).then(() => {
+		return { id };
+	});
 
 	return {
 		type: DELETE_TODO,
