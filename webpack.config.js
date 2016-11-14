@@ -110,11 +110,6 @@ module.exports = {
 					path: 'redux-promise-middleware/dist/ReduxPromiseMiddleware.min.js'
 				},
 				{
-					name: 'superagent',
-					var: 'superagent',
-					path: 'superagent/superagent.js'
-				},
-				{
 					name: 'lodash',
 					var: '_',
 					path: 'lodash/lodash.min.js'
