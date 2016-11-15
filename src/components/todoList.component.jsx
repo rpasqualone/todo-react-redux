@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import pureRender from 'pure-render-decorator';
 import ui from 'redux-ui-shallow';
 import DatePicker from 'material-ui/DatePicker';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import Todo from './todo.component';
 
@@ -18,7 +19,8 @@ export default class TodoList extends Component {
 	render() {
 		return (
 			<div>
-				<DatePicker hintText="Portrait Dialog" id="asd" />
+				<DatePicker hintText="Portrait Dialog"/>
+				<RaisedButton />
 				<ul>
 					{ this.renderTodos() }
 					<li>

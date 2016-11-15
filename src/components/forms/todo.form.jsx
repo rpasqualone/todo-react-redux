@@ -2,12 +2,29 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import pureRender from 'pure-render-decorator';
 
-function renderField ({ name, input, label, type, meta: { touched, error, warning }, ...props }) {
-	return <input { ...input } placeholder={ label } type={ type } { ...props } />;
-}
+const renderInput = (field) => (
+	<span>
+		{	console.log(field.error) }
+		<input {...field.input } { ...field } />
+		{field.error && <span>{field.error}</span>}
+	</span>
+);
+
+const validate = values => {
+	const errors = {};
+
+	if (!values.title) {
+		errors.title = 'Required';
+	}
+	if (!values.message) {
+		errors.message = 'Required';
+	}
+
+	return errors;
+};
 
 @pureRender
-@reduxForm({form: 'todo'})
+@reduxForm({form: 'todo', destroyOnUnmount: false, validate})
 class TodoForm extends Component {
 	componentDidMount() {
 		const { todo } = this.props;
@@ -21,8 +38,8 @@ class TodoForm extends Component {
 		return (
 			<div>
 				<form onSubmit={ handleSubmit }>
-					<Field name="title" type="text" component={ renderField } label="Title" props={{ autoFocus: true }} />
-					<Field name="message" type="text" component={ renderField } label="Details" />
+					<Field name="title" component={ renderInput } placeholder="Title" autoFocus="true"/>
+					<Field name="message" component={ renderInput } placeholder="Details" />
 					<button type="submit" style={{ display: 'none' }}>Submit</button>
 				</form>
 				<button className="btn btn-danger" onClick={this.props.handleDelete}>Delete</button>

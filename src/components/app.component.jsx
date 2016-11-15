@@ -1,3 +1,4 @@
+/*
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import DatePicker from 'material-ui/DatePicker';
@@ -9,7 +10,8 @@ export default class MyAwesomeReactComponent extends Component {
 		);
 	}
 }
+*/
 
-/*export default function App(props) {
+export default function App(props) {
 	return ( props.children );
-}*/
+}
