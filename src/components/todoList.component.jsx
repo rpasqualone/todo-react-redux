@@ -19,8 +19,6 @@ export default class TodoList extends Component {
 	render() {
 		return (
 			<div>
-				<DatePicker hintText="Portrait Dialog"/>
-				<RaisedButton />
 				<ul>
 					{ this.renderTodos() }
 					<li>
@@ -30,6 +28,8 @@ export default class TodoList extends Component {
 						/>
 					</li>
 				</ul>
+				<DatePicker hintText="Portrait Dialog"/>
+				<RaisedButton label="Default"/>
 			</div>
 		);
 	}

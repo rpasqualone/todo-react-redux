@@ -19,8 +19,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-var injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import './styles/test.scss';
 import './styles/test.less';
@@ -30,12 +29,14 @@ import routes from './routes';
 
 const store = configureStore();
 
+injectTapEventPlugin();
+
 ReactDOM.render(
-	<Provider store={store}>
-		<MuiThemeProvider>
+	<MuiThemeProvider>
+		<Provider store={store}>
 			<Router history={browserHistory} routes={routes} />
-		</MuiThemeProvider>
-	</Provider>,
+		</Provider>
+	</MuiThemeProvider>,
 	document.querySelector('#app')
 );
 
