@@ -88,11 +88,6 @@ module.exports = {
 					path: 'react/dist/react.min.js'
 				},
 				{
-					name: 'react-dom',
-					var: 'ReactDOM',
-					path: 'react-dom/dist/react-dom.min.js'
-				},
-				{
 					name: 'redux',
 					var: 'Redux',
 					path: 'redux/dist/redux.min.js'

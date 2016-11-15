@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import DatePicker from 'material-ui/DatePicker';
 
-const MyAwesomeReactComponent = () => (
-	<RaisedButton label="Default" />
-);
+export default class MyAwesomeReactComponent extends Component {
+	render() {
+		return(
+			<DatePicker hintText="Portrait Dialog" />
+		);
+	}
+}
 
-export default MyAwesomeReactComponent;
 /*export default function App(props) {
 	return ( props.children );
 }*/

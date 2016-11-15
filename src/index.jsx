@@ -3,15 +3,12 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MyAwesomeReactComponent from './components/app.component';
 var injectTapEventPlugin = require("react-tap-event-plugin");
-
-const App = () => (
-	<MuiThemeProvider>
-		<MyAwesomeReactComponent />
-	</MuiThemeProvider>
-);
+injectTapEventPlugin();
 
 ReactDOM.render(
-	<App />,
+	<MuiThemeProvider>
+		<MyAwesomeReactComponent />
+	</MuiThemeProvider>,
 	document.getElementById('app')
 );
 
