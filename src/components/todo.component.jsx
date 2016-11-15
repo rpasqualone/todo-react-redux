@@ -14,7 +14,9 @@ export default class Todo extends Component {
 
 		if (this.props.ui.selectedTodo === todo.id) {
 			return (
-				<TodoForm onSubmit={this.handleSubmit} todo={todo} />
+				<div>
+					<TodoForm onSubmit={this.handleSubmit} todo={todo} handleDelete={this.handleDelete}/>
+				</div>
 			);
 		} else if (todo.id === -1) {
 			return (
@@ -27,7 +29,6 @@ export default class Todo extends Component {
 				<div className={todo.done ? 'done' : ''}>
 					<input type="checkbox" checked={todo.done} onClick={this.handleCheckbox} />
 					<span onClick={this.handleSelectEvent}>{`${todo.title}: ${todo.message}`}</span>
-					<button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
 				</div>
 			);
 		}
@@ -46,7 +47,7 @@ export default class Todo extends Component {
 	handleDelete = () => {
 		console.log(this.props.todo.id);
 		this.props.deleteTodo(this.props.todo.id).then(() => {
-			this.props.updateUI('selectedTodo', null);
+			//this.props.updateUI('selectedTodo', null);
 		});
 	};
 

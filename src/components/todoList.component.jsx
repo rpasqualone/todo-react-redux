@@ -35,7 +35,11 @@ export default class TodoList extends Component {
 		return todos.map((todo) => {
 			return (
 				<li key={ todo.id }>
-					<Todo todo={ todo } updateTodo={ this.props.dispatch.updateTodo } deleteTodo={ this.props.dispatch.deleteTodo } />
+					<Todo
+						todo={ todo }
+						updateTodo={ this.props.dispatch.updateTodo }
+						deleteTodo={ this.props.dispatch.deleteTodo }
+					/>
 				</li>
 			);
 		});

@@ -19,11 +19,14 @@ class TodoForm extends Component {
 		const { handleSubmit } = this.props;
 
 		return (
-			<form onSubmit={ handleSubmit }>
-				<Field name="title" type="text" component={ renderField } label="Title" props={{ autoFocus: true }} />
-				<Field name="message" type="text" component={ renderField } label="Details" />
-				<button type="submit" style={{ display: 'none' }}>Submit</button>
-			</form>
+			<div>
+				<form onSubmit={ handleSubmit }>
+					<Field name="title" type="text" component={ renderField } label="Title" props={{ autoFocus: true }} />
+					<Field name="message" type="text" component={ renderField } label="Details" />
+					<button type="submit" style={{ display: 'none' }}>Submit</button>
+				</form>
+				<button className="btn btn-danger" onClick={this.props.handleDelete}>Delete</button>
+			</div>
 		);
 	}
 }
