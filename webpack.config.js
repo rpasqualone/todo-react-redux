@@ -80,53 +80,6 @@ module.exports = {
 			template: './public/index.html',
 			filename: 'index.html'
 		}),
-		new HtmlWebpackExternalsPlugin(
-			[
-				{
-					name: 'react',
-					var: 'React',
-					path: 'react/dist/react.min.js'
-				},
-				{
-					name: 'react-dom',
-					var: 'ReactDOM',
-					path: 'react-dom/dist/react-dom.min.js'
-				},
-				{
-					name: 'redux',
-					var: 'Redux',
-					path: 'redux/dist/redux.min.js'
-				},
-				{
-					name: 'react-redux',
-					var: 'ReactRedux',
-					path: 'react-redux/dist/react-redux.min.js'
-				},
-				{
-					name: 'redux-actions',
-					var: 'ReduxActions',
-					path: 'redux-actions/dist/redux-actions.min.js'
-				},
-				{
-					name: 'redux-promise-middleware',
-					var: 'ReduxPromiseMiddleware',
-					path: 'redux-promise-middleware/dist/ReduxPromiseMiddleware.min.js'
-				},
-				{
-					name: 'lodash',
-					var: '_',
-					path: 'lodash/lodash.min.js'
-				},
-				{
-					name: 'bootstrap',
-					path: 'bootstrap/dist/css/bootstrap.min.css'
-				}
-			],
-			{basedir: __dirname}
-		),
-		new CopyWebpackPlugin([
-			{from: 'node_modules/bootstrap/dist/', to: 'vendor/bootstrap/dist/'}
-		]),
 		new ExtractTextPlugin('bundle.css')
 	]
 };

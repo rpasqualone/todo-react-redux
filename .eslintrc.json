@@ -174,7 +174,7 @@
 		"max-nested-callbacks": ["warn", {"max": 5}],
 		"max-params": ["warn", {"max": 5}],
 		"max-statements-per-line": ["error", {"max": 1}],
-		"max-statements": ["warn", {"max": 20}],
+		"max-statements": ["warn", {"max": 40}],
 		"new-cap": ["error", {"capIsNew": false}],
 		"new-parens": "error",
 		"newline-per-chained-call": ["error", {"ignoreChainWithDepth": 3}],

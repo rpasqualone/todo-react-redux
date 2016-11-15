@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import pureRender from 'pure-render-decorator';
 
-const renderInput = (field) => (
+const renderInput = field =>
 	<span>
-		{	console.log(field.error) }
+		{console.log(field)}
 		<input {...field.input } { ...field } />
-		{field.error && <span>{field.error}</span>}
-	</span>
-);
+		{field.meta.error && <span>{field.meta.error}</span>}
+	</span>;
 
 const validate = values => {
 	const errors = {};
@@ -38,11 +37,11 @@ class TodoForm extends Component {
 		return (
 			<div>
 				<form onSubmit={ handleSubmit }>
-					<Field name="title" component={ renderInput } placeholder="Title" autoFocus="true"/>
+					<Field name="title" component={ renderInput } placeholder="Title" autoFocus="true" />
 					<Field name="message" component={ renderInput } placeholder="Details" />
 					<button type="submit" style={{ display: 'none' }}>Submit</button>
 				</form>
-				<button className="btn btn-danger" onClick={this.props.handleDelete}>Delete</button>
+				<button className="btn btn-danger" onClick={this.props.onHandleDelete}>Delete</button>
 			</div>
 		);
 	}

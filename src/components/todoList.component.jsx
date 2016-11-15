@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import pureRender from 'pure-render-decorator';
 import ui from 'redux-ui-shallow';
-import DatePicker from 'material-ui/DatePicker';
-import RaisedButton from 'material-ui/RaisedButton';
 
 import Todo from './todo.component';
+import Temp from './temp.component';
 
 @ui({
-	state: { selectedTodo: null }
+	state: { selectedTodo: null, showModal: false},
+	shallowCompare: true
 })
-
 @pureRender
 export default class TodoList extends Component {
 	componentWillMount() {
@@ -28,8 +27,7 @@ export default class TodoList extends Component {
 						/>
 					</li>
 				</ul>
-				<DatePicker hintText="Portrait Dialog"/>
-				<RaisedButton label="Default"/>
+				<Temp />
 			</div>
 		);
 	}

@@ -6,7 +6,7 @@ import TodoForm from './forms/todo.form';
 
 import '../styles/todo.css';
 
-@ui()
+@ui({shallowCompare: true})
 @pureRender
 export default class Todo extends Component {
 	render() {
@@ -15,7 +15,7 @@ export default class Todo extends Component {
 		if (this.props.ui.selectedTodo === todo.id) {
 			return (
 				<div>
-					<TodoForm onSubmit={this.handleSubmit} todo={todo} handleDelete={this.handleDelete}/>
+					<TodoForm onSubmit={this.handleSubmit} todo={todo} onHandleDelete={this.handleDelete} />
 				</div>
 			);
 		} else if (todo.id === -1) {
@@ -27,7 +27,7 @@ export default class Todo extends Component {
 		} else {
 			return (
 				<div className={todo.done ? 'done' : ''}>
-					<input type="checkbox" checked={todo.done} onClick={this.handleCheckbox} />
+					<input type="checkbox" checked={todo.done} onChange={this.handleCheckbox} />
 					<span onClick={this.handleSelectEvent}>{`${todo.title}: ${todo.message}`}</span>
 				</div>
 			);
@@ -45,10 +45,7 @@ export default class Todo extends Component {
 	};
 
 	handleDelete = () => {
-		console.log(this.props.todo.id);
-		this.props.deleteTodo(this.props.todo.id).then(() => {
-			//this.props.updateUI('selectedTodo', null);
-		});
+		this.props.deleteTodo(this.props.todo.id);
 	};
 
 	handleSubmit = (values) => {
