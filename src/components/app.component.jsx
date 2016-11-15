@@ -1,5 +1,11 @@
-export default function App(props) {
-	return (
-		props.children
-	);
-}
+import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+
+const MyAwesomeReactComponent = () => (
+	<RaisedButton label="Default" />
+);
+
+export default MyAwesomeReactComponent;
+/*export default function App(props) {
+	return ( props.children );
+}*/
