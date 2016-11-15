@@ -25,4 +25,3 @@ ReactDOM.render(
 	</MuiThemeProvider>,
 	document.querySelector('#app')
 );
-
