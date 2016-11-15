@@ -12,12 +12,15 @@ module.exports = {
 	entry: './src/index.jsx',
 	devtool: PROD ? null : 'source-map',
 	devServer: {
-		port: process.env.NODE_DEV_WWW_PORT || 3000
+		port: process.env.NODE_DEV_WWW_PORT || 3000,
+		historyApiFallback: {
+	      index: '/index.html'
+	    }
 	},
 	output: {
 		path: path.join(__dirname, 'build'),
 		publicPath: '',
-		filename: 'bundle.js'
+		filename: '/bundle.js'
 	},
 	resolve: {
 		extensions: ['', '.jsx', '.js']
@@ -80,7 +83,6 @@ module.exports = {
 			template: './public/index.html',
 			filename: 'index.html'
 		}),
-		new ExtractTextPlugin('bundle.css')
+		new ExtractTextPlugin('/bundle.css')
 	]
 };
-
