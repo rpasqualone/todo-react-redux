@@ -5,6 +5,7 @@ import App from './components/app.component';
 import TodoList from './containers/todoList.container';
 import Temp from './components/temp.component';
 import ItemsContainer from './containers/items.container';
+import NoMatch from './components/noMatch.component';
 
 export default function() {
 	return (
@@ -14,6 +15,7 @@ export default function() {
 				<Route path="/temp" component={Temp} />
 				<Route path="/items" component={ItemsContainer} />
 			</Route>
+			<Route path="/*" component={NoMatch} />
 		</Router>
 	);
 }

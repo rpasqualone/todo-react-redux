@@ -13,13 +13,21 @@ export default class Temp extends Component {
 		const { item } = this.props;
 		return (
 			<div>
-				<h3>{ item.title }</h3>
-				<h4>{ item.details }</h4>
 				<div>
-					<span><i className="glyphicon glyphicon-calendar" /> { item.date }</span>
+					<h3>{ item.title }</h3>
+					<h4>{ item.details }</h4>
+					<div>
+						<span><i className="glyphicon glyphicon-calendar" /> { item.date }</span>
+					</div>
+					<div>
+						<span><i className="glyphicon glyphicon-map-marker" /> { item.location }</span>
+					</div>
 				</div>
 				<div>
-					<span><i className="glyphicon glyphicon-map-marker" /> { item.location }</span>
+					<h3>${ item.price }</h3>
+					<div>
+						<span><i className="glyphicon glyphicon-shopping-cart" /></span>
+					</div>
 				</div>
 			</div>
 		);

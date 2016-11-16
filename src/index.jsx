@@ -9,6 +9,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import './styles/test.scss';
+import './styles/defaults.scss';
 import './styles/test.less';
 
 import configureStore from './utils/configureStore';
@@ -27,4 +28,3 @@ ReactDOM.render(
 	</MuiThemeProvider>,
 	document.getElementById('app')
 );
-

@@ -10,14 +10,16 @@ export function fetchItems() {
 				title: 'Full Event Pass',
 				details: '4-Day Festival Pass',
 				date: 'June 25, 2017',
-				location: 'Seaside Park, Bridgeport CT'
+				location: 'Seaside Park, Bridgeport CT',
+				price: 215
 			},
 			{
 				id: 2,
 				title: 'Full Event Pass 2',
 				details: '4-Day Festival Pass',
 				date: 'June 25, 2017',
-				location: 'Seaside Park, Bridgeport CT'
+				location: 'Seaside Park, Bridgeport CT',
+				price: 12.54
 			}
 		];
 	});
