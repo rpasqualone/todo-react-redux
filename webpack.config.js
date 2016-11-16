@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+// TODO: Fix these
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -12,7 +14,10 @@ module.exports = {
 	entry: './src/index.jsx',
 	devtool: PROD ? null : 'source-map',
 	devServer: {
-		port: process.env.NODE_DEV_WWW_PORT || 3000
+		port: process.env.NODE_DEV_WWW_PORT || 3000,
+		historyApiFallback: {
+			index: '/index.html'
+		}
 	},
 	output: {
 		path: path.join(__dirname, 'build'),

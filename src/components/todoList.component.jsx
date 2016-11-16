@@ -3,10 +3,9 @@ import pureRender from 'pure-render-decorator';
 import ui from 'redux-ui-shallow';
 
 import Todo from './todo.component';
-import Temp from './temp.component';
 
 @ui({
-	state: { selectedTodo: null, showModal: false},
+	state: { selectedTodo: null },
 	shallowCompare: true
 })
 @pureRender
@@ -27,7 +26,6 @@ export default class TodoList extends Component {
 						/>
 					</li>
 				</ul>
-				<Temp />
 			</div>
 		);
 	}

@@ -4,7 +4,6 @@ import pureRender from 'pure-render-decorator';
 
 const renderInput = field =>
 	<span>
-		{console.log(field)}
 		<input {...field.input } { ...field } />
 		{field.meta.error && <span>{field.meta.error}</span>}
 	</span>;
@@ -41,7 +40,7 @@ class TodoForm extends Component {
 					<Field name="message" component={ renderInput } placeholder="Details" />
 					<button type="submit" style={{ display: 'none' }}>Submit</button>
 				</form>
-				<button className="btn btn-danger" onClick={this.props.onHandleDelete}>Delete</button>
+				{ this.props.todo.id >= 0 && <button className="btn btn-danger" onClick={this.props.onHandleDelete}>Delete</button> }
 			</div>
 		);
 	}

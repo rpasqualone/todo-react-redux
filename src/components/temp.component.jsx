@@ -7,7 +7,9 @@ import TimePicker from 'material-ui/TimePicker';
 
 import { Button, Modal } from 'react-bootstrap';
 
-@ui({shallowCompare: true})
+@ui(
+	{state: { showModal: false }, shallowCompare: true}
+)
 @pureRender
 export default class Temp extends Component {
 	render() {
@@ -23,6 +25,8 @@ export default class Temp extends Component {
 					<Modal.Header>Test</Modal.Header>
 					<Modal.Body>Body Test</Modal.Body>
 				</Modal>
+				{/* add this */}
+				{this.props.children}
 			</div>
 		);
 	}
