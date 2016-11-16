@@ -10,6 +10,9 @@ import ItemCardList from './components/item/cardList';
 
 import StyleGuide from './components/StyleGuide.component';
 
+import BoxOffice from './components/boxoffice.component';
+import CartIntro from './components/boxoffice/cartintro.component';
+
 export default (
 	<Route path="/" component={App}>
 		<IndexRoute component={ItemCard} />
@@ -18,6 +21,9 @@ export default (
 		<Route path="styleguide">
 			<IndexRoute component={StyleGuide} />
 			<Route path="itemcardlist" component={ItemCardList} />
+		</Route>
+		<Route path="boxoffice" component={BoxOffice}>
+			<IndexRoute component={CartIntro} />
 		</Route>
 	</Route>
 );
