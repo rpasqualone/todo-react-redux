@@ -27,4 +27,3 @@ ReactDOM.render(
 	</MuiThemeProvider>,
 	document.getElementById('app')
 );
-
