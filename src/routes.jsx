@@ -10,7 +10,7 @@ import ItemCardList from './components/item/cardList';
 
 import StyleGuide from './components/StyleGuide.component';
 
-import BoxOffice from './components/boxoffice.component';
+import BoxOffice from './components/boxoffice/boxoffice.component';
 import CartIntro from './components/boxoffice/cartintro.component';
 
 export default (

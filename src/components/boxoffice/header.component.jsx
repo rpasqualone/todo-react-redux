@@ -5,7 +5,7 @@ import pureRender from 'pure-render-decorator';
 export default class Header extends Component {
 	render() {
 		return (
-			<header className="cart-header">
+			<header className="cart-header row">
 header
 			</header>
 		);
