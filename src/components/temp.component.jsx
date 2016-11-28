@@ -4,7 +4,6 @@ import ui from 'redux-ui-shallow';
 import DatePicker from 'material-ui/DatePicker';
 import RaisedButton from 'material-ui/RaisedButton';
 import TimePicker from 'material-ui/TimePicker';
-
 import { Button, Modal } from 'react-bootstrap';
 
 @ui(
@@ -21,11 +20,14 @@ export default class Temp extends Component {
 					hintText="12hr Format"
 				/>
 				<Button onClick={this.handleModal}>Test</Button>
-				<Modal show={this.props.ui.showModal} onHide={this.handleModal}>
-					<Modal.Header>Test</Modal.Header>
-					<Modal.Body>Body Test</Modal.Body>
+				<Modal show={this.props.ui.showModal} onHide={this.handleModal} className="test">
+					<Modal.Header><button>Test</button></Modal.Header>
+					<Modal.Body>
+						<div>Body</div>
+					</Modal.Body>
+					<Modal.Footer>Some footer data</Modal.Footer>
+					<Modal.Footer>Some footer data</Modal.Footer>
 				</Modal>
-				{/* add this */}
 				{this.props.children}
 			</div>
 		);

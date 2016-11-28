@@ -6,8 +6,16 @@ export const CREATE_TODO = 'CREATE_TODO';
 export const UPDATE_TODO = 'UPDATE_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
 
+import { _fetchTodos } from '../translations/todo.translations';
+
 export function fetchTodos() {
-	const request = axios.get(`${process.env.API_URI}/todos/`);
+	const instance = axios.create();
+
+	//call to translation layer
+	_fetchTodos(instance);
+
+	//const request = axios.get(`${process.env.API_URI}/todos/`);
+	const request = instance.get('thisCanBeAnythingWeWant.com');
 
 	return {
 		type: FETCH_TODOS,
