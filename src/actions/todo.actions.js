@@ -6,7 +6,7 @@ export const CREATE_TODO = 'CREATE_TODO';
 export const UPDATE_TODO = 'UPDATE_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
 
-import { _fetchTodos } from '../translations/todo.translations';
+import { _fetchTodos } from '../translations/todo.translation';
 
 export function fetchTodos() {
 	const instance = axios.create();
