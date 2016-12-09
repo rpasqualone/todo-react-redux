@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, browserHistory, Router, IndexRoute } from 'react-router';
 
 import App from './components/app.component';
 import TodoList from './containers/todoList.container';
